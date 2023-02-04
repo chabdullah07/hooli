@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Grid } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -15,14 +16,18 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-
+import { Icon } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import LogoutIcon from "@mui/icons-material/Logout";
+import SearchIcon from "@mui/icons-material/Search";
+import ExploreIcon from "@mui/icons-material/Explore";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import PersonIcon from "@mui/icons-material/Person";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
-  border: 0,
-  bgcolor: "black",
+  borderRight: "0.5px solid #eaebed",
   width: drawerWidth,
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
@@ -33,7 +38,6 @@ const openedMixin = (theme) => ({
 
 const closedMixin = (theme) => ({
   border: 0,
-  bgcolor: "black",
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -49,27 +53,21 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-end",
-  border: 0,
-  bgcolor: "black",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
-  border: 0,
-  bgcolor: "black",
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
-    border: 0,
-    bgcolor: "black",
     marginLeft: drawerWidth,
+    zIndex: -1,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -82,26 +80,53 @@ const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
   width: drawerWidth,
-  border: 0,
-  bgcolor: "black",
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
   ...(open && {
-    border: 0,
-    bgcolor: "black",
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
   }),
   ...(!open && {
-    border: 0,
-    bgcolor: "black",
     ...closedMixin(theme),
     "& .MuiDrawer-paper": closedMixin(theme),
   }),
 }));
 
 export default function MiniDrawer() {
+  const menu = [
+    {
+      id: 1,
+      name: "Home",
+      icon: <HomeIcon />,
+    },
+    {
+      id: 2,
+      name: "Search",
+      icon: <SearchIcon />,
+    },
+    {
+      id: 3,
+      name: "Explore",
+      icon: <ExploreIcon />,
+    },
+    {
+      id: 4,
+      name: "Notifications",
+      icon: <NotificationsIcon />,
+    },
+    {
+      id: 5,
+      name: "Create",
+      icon: <AddCircleIcon />,
+    },
+    {
+      id: 6,
+      name: "Profile",
+      icon: <PersonIcon />,
+    },
+  ];
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -114,146 +139,193 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{ display: "flex", bgcolor: "black" }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{ backgroundColor: "yellow", border: 0 }}
-        open={open}
-        elevation={0}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
+    <>
+      <div>
+        <Box sx={{ display: "flex", bgcolor: "black" }}>
+          <CssBaseline />
+          <AppBar
+            position="fixed"
             sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
               backgroundColor: "black",
-              border: 0,
+              left: 0,
             }}
+            open={open}
+            elevation={0}
           >
-            <>
-              <MenuIcon />
-            </>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader sx={{ bgColor: "black", border: 0 }}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <>
-                <div
-                  style={{
-                    display: "flex",
-                    backgroundColor: "black",
-                  }}
-                >
-                  <Typography sx={{ bgcolor: "black", color: "white" }}>
-                    hooli
-                  </Typography>
-                  <ChevronLeftIcon sx={{ color: "white" }} />
-                </div>
-              </>
-            )}
-          </IconButton>
-        </DrawerHeader>
-
-        <List sx={{ backgroundColor: "Black", border: 0 }}>
-          {[
-            "Home",
-            "Search",
-            "Explore",
-            "Notification",
-            "Create",
-            "Profile",
-          ].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
                 sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
+                  marginRight: 5,
+                  paddingTop: "30px",
+                  ...(open && { display: "none" }),
+                  backgroundColor: "transparent",
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                    color: "white",
-                  }}
+                <>
+                  <MenuIcon />
+                </>
+              </IconButton>
+            </Toolbar>
+          </AppBar>
+          <Drawer variant="permanent" open={open}>
+            <DrawerHeader
+              sx={{
+                backgroundColor: "black",
+                paddingTop: "30px",
+                paddingBottom: "30px",
+              }}
+            >
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === "rtl" ? (
+                  <ChevronRightIcon />
+                ) : (
+                  <>
+                    <div
+                      style={{
+                        display: "flex",
+                        width: "200px",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: "white",
+                          fontWeight: "900",
+                          fontSize: "24px",
+                        }}
+                      >
+                        <span style={{ color: "white" }}>hoo</span>
+                        <span style={{ color: "#0EB9DB" }}>li</span>
+                      </Typography>
+                      <ChevronLeftIcon sx={{ color: "white" }} />
+                    </div>
+                  </>
+                )}
+              </IconButton>
+            </DrawerHeader>
+
+            <List sx={{ backgroundColor: "Black" }}>
+              {menu.map((item) => (
+                <ListItem
+                  key={item.id}
+                  disablePadding
+                  sx={{ display: "block", paddingTop: "10px" }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText
-                  primary={text}
-                  sx={{ opacity: open ? 1 : 0, color: "white" }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <List
-          sx={{
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                        color: "white",
+                      }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={item.name}
+                      sx={{ opacity: open ? 1 : 0, color: "white" }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+            <List
+              sx={{
+                backgroundColor: "black",
+                height: "100vh",
+                display: "flex",
+                alignItems: "end",
+              }}
+            >
+              {["Logout"].map((text) => (
+                <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "end",
+                      px: 2.5,
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        color: "white",
+                      }}
+                    >
+                      <LogoutIcon />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={text}
+                      sx={{ opacity: open ? 1 : 0, color: "white" }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          </Drawer>
+        </Box>
+      </div>
+      <div style={{ backgroundColor: "black" }}>
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          style={{
+            minHeight: "100vh",
+            maxWidth: "60%",
+            margin: "auto",
             backgroundColor: "black",
-            border: 0,
-            bottom: 0,
-            height: "200px",
           }}
         >
-          {["Logout"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-
-                    justifyContent: "center",
-                    color: "white",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText
-                  primary={text}
-                  sx={{ opacity: open ? 1 : 0, color: "white" }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, border: 0 }}>
-        <DrawerHeader />
-        <Typography paragraph sx={{ color: "white" }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-      </Box>
-    </Box>
+          <Grid item xs={3}>
+            <Typography paragraph sx={{ color: "white" }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
+              Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
+              gravida rutrum quisque non tellus. Convallis convallis tellus id
+              interdum velit laoreet id donec ultrices. Odio morbi quis commodo
+              odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum
+              est ultricies integer quis. Cursus euismod quis viverra nibh cras.
+              Metus vulputate eu scelerisque felis imperdiet proin fermentum
+              leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt
+              lobortis feugiat vivamus at augue. At augue eget arcu dictum
+              varius duis at consectetur lorem. Velit sed ullamcorper morbi
+              tincidunt. Lorem donec massa sapien faucibus et molestie ac.
+            </Typography>
+            <Typography paragraph sx={{ color: "white" }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
+              Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
+              gravida rutrum quisque non tellus. Convallis convallis tellus id
+              interdum velit laoreet id donec ultrices. Odio morbi quis commodo
+              odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum
+              est ultricies integer quis. Cursus euismod quis viverra nibh cras.
+              Metus vulputate eu scelerisque felis imperdiet proin fermentum
+              leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt
+              lobortis feugiat vivamus at augue. At augue eget arcu dictum
+              varius duis at consectetur lorem. Velit sed ullamcorper morbi
+              tincidunt. Lorem donec massa sapien faucibus et molestie ac.
+            </Typography>
+          </Grid>
+        </Grid>
+      </div>
+    </>
   );
 }
