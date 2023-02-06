@@ -3,6 +3,7 @@ import Drawer from "./components/Drawer";
 import { Routes, Route } from "react-router-dom";
 import Post from "./components/Post";
 import { Grid } from "@mui/material";
+import React from "react";
 
 function App() {
   return (
