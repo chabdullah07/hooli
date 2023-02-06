@@ -1,0 +1,45 @@
+.post
+{
+    max-width:600px;
+    padding-top: 50px;
+}
+.postImage
+{
+    width: 100%;
+    object-fit: contain;    
+    border: 0.5px solid lightgray;
+    border-radius: 3px;
+}
+.postText
+{
+    text-align: left;
+    color: white;
+    font-weight: normal;
+}
+.postUser
+{
+    text-align: left;
+    color: white;
+}
+.postHeader
+{
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.postAvatar
+{
+    margin-right: 15px;
+}
+.moreSettings
+{
+    margin-left: auto;
+    justify-self: flex-end;
+    color: white;
+}
+.postDivider
+{
+    margin-top: 30px !important;
+    background-color: lightgray;
+    width: 100%;
+}
