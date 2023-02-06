@@ -23,9 +23,10 @@ import ExploreIcon from "@mui/icons-material/Explore";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PersonIcon from "@mui/icons-material/Person";
+
 import "./Drawer.css";
 import Post from "./Post";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -102,31 +103,37 @@ export default function MiniDrawer() {
       id: 1,
       name: "Home",
       icon: <HomeIcon />,
+      path: "/explore",
     },
     {
       id: 2,
       name: "Search",
       icon: <SearchIcon />,
+      path: "/explore",
     },
     {
       id: 3,
       name: "Explore",
       icon: <ExploreIcon />,
+      path: "/explore",
     },
     {
       id: 4,
       name: "Notifications",
       icon: <NotificationsIcon />,
+      path: "/explore",
     },
     {
       id: 5,
       name: "Create",
       icon: <AddCircleIcon />,
+      path: "/explore",
     },
     {
       id: 6,
       name: "Profile",
       icon: <PersonIcon />,
+      path: "/explore",
     },
   ];
 
@@ -229,6 +236,8 @@ export default function MiniDrawer() {
                       justifyContent: open ? "initial" : "center",
                       px: 2.5,
                     }}
+                    component={Link}
+                    to={item.path}
                   >
                     <ListItemIcon
                       sx={{
@@ -269,7 +278,6 @@ export default function MiniDrawer() {
                       justifyContent: open ? "initial" : "end",
                       px: 2.5,
                     }}
-                    to="Home"
                   >
                     <ListItemIcon
                       sx={{

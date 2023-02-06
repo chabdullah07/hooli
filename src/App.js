@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Post from "./components/Post";
 import { Grid } from "@mui/material";
 import React from "react";
+import Explore from "./components/Explore";
 
 function App() {
   return (
@@ -35,17 +36,7 @@ function App() {
                 />
               }
             />
-            <Route
-              exact
-              path="Home"
-              element={
-                <Post
-                  username="Ali"
-                  caption="I love Pakistan"
-                  imageUrl="https://img.freepik.com/premium-vector/5th-february-kashmir-solidarity-day-translation-urdu-text-5th-february-kashmir-solidarity-day_708934-578.jpg?w=1480"
-                />
-              }
-            />
+            <Route exact path="explore" element={<Explore />} />
           </Routes>
         </Grid>
       </div>
