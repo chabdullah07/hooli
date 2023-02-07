@@ -9,6 +9,7 @@ export default function MasonryImageList() {
   return (
     <>
       <Grid
+        className="main"
         container
         spacing={0}
         direction="column"
@@ -17,8 +18,8 @@ export default function MasonryImageList() {
         style={{
           minHeight: "100vh",
           maxWidth: "150%",
-          margin: "auto",
-          backgroundColor: "#121212",
+          margin: 0,
+          backgroundColor: "#131313",
         }}
       >
         <Box sx={{ width: 700, height: 750, overflowY: "scroll" }}>
