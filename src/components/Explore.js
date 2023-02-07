@@ -10,19 +10,12 @@ export default function MasonryImageList() {
     <>
       <Grid
         className="main"
-        container
         spacing={0}
         direction="column"
         alignItems="center"
         justifyContent="center"
-        style={{
-          minHeight: "100vh",
-          maxWidth: "150%",
-          margin: 0,
-          backgroundColor: "#131313",
-        }}
       >
-        <Box sx={{ width: 700, height: 750, overflowY: "scroll" }}>
+        <Box className="imgBG">
           <ImageList variant="masonry" cols={3} gap={10}>
             {itemData.map((item) => (
               <ImageListItem key={item.img}>

@@ -22,5 +22,16 @@
 }
 
 .main{
-    
+    flex: auto;
+    position: relative !important;
+    overflow: auto !important;
+    min-height: "100vh";
+    max-width: "100%" ;
+    margin: 0;
+}
+
+.imgBG{
+    width: 700;
+    height: 750;
+    overflow-y: "scroll"; 
 }
