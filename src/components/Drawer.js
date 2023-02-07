@@ -24,11 +24,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PersonIcon from "@mui/icons-material/Person";
 
 import "./Drawer.css";
-<<<<<<< Updated upstream
-import Post from "./Post";
-import { Routes, Route, Link } from "react-router-dom";
-=======
->>>>>>> Stashed changes
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -105,7 +101,7 @@ export default function MiniDrawer() {
       id: 1,
       name: "Home",
       icon: <HomeIcon />,
-      path: "/explore",
+      path: "/",
     },
     {
       id: 2,

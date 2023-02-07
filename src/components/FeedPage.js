@@ -28,7 +28,7 @@ function FeedPage() {
 
   return (
     <>
-      <div>
+      <div style={{ marginBottom: "50px" }}>
         {posts.map((post) => (
           <Post
             username={post.username}
