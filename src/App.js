@@ -1,10 +1,13 @@
 import "./App.css";
 import Drawer from "./components/Drawer";
 import { Routes, Route } from "react-router-dom";
-import Post from "./components/Post";
 import { Grid } from "@mui/material";
+<<<<<<< Updated upstream
 import React from "react";
 import Explore from "./components/Explore";
+=======
+import FeedPage from "./components/FeedPage";
+>>>>>>> Stashed changes
 
 function App() {
   return (
@@ -19,12 +22,13 @@ function App() {
           justifyContent="center"
           style={{
             minHeight: "100vh",
-            maxWidth: "60%",
+            maxWidth: "40%",
             margin: "auto",
             backgroundColor: "black",
           }}
         >
           <Routes>
+<<<<<<< Updated upstream
             <Route
               exact
               path="/"
@@ -37,6 +41,9 @@ function App() {
               }
             />
             <Route exact path="explore" element={<Explore />} />
+=======
+            <Route exact path="/" element={<FeedPage />} />
+>>>>>>> Stashed changes
           </Routes>
         </Grid>
       </div>

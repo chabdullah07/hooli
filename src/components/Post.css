@@ -12,6 +12,7 @@
 }
 .postText
 {
+    margin-top: 10px;
     text-align: left;
     color: white;
     font-weight: normal;
@@ -39,7 +40,11 @@
 }
 .postDivider
 {
-    margin-top: 30px !important;
+    margin-top: 25px !important;
     background-color: lightgray;
     width: 100%;
+}
+.postLikes{
+    display: flex;
+    align-items: center;
 }
