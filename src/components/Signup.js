@@ -16,7 +16,7 @@ import { WidthNormal } from '@mui/icons-material';
 import { width } from '@mui/system';
 
 
-const Login = () => {
+const Signup = () => {
   return(
     <div className='bg-black h-screen w-full flex justify-center items-center'>
       <div className='h-[600px] w-[800px] bg-white flex justify-center'>
@@ -31,7 +31,19 @@ const Login = () => {
           <div class="mb-6">
             <input type="text" class="form-control block w-700 rounded-lg px-4 py-2 mx-5 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-200 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
               id="exampleFormControlInput2"
-              placeholder="User Name /Phone/Email"
+              placeholder="Username"
+            />
+          </div>
+          <div class="mb-6">
+            <input type="text" class="form-control block w-700 rounded-lg px-4 py-2 mx-5 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-200 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+              id="exampleFormControlInput2"
+              placeholder="Full Name"
+            />
+          </div>
+          <div class="mb-6">
+            <input type="text" class="form-control block w-700 rounded-lg px-4 py-2 mx-5 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-200 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
+              id="exampleFormControlInput2"
+              placeholder="Email Address"
             />
           </div>
           <div class="mb-6">
@@ -42,15 +54,23 @@ const Login = () => {
               placeholder="Password"
             />
           </div>
+          <div class="flex items-center justify-center">
+          <div class="flex items-center justify-center">
+  <div class="datepicker relative form-floating mb-3 xl:w-96" data-mdb-toggle-button="false">
+    <input type="text"
+      class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      placeholder="Select a date" />
+    <label for="floatingInput" class="text-gray-700">Select a date</label>
+    <button class="datepicker-toggle-button" data-mdb-toggle="datepicker">
+      <i class="fas fa-calendar datepicker-toggle-icon"></i>
+    </button>
+  </div>
+</div>
+</div>
           <div class="text-center lg:text-center mb-4">
-          <button class="w-700 h-12 px-6 text-indigo-100 transition-colors duration-150 bg-sky-500/100 rounded-lg focus:shadow-outline hover:bg-indigo-800">Login</button>
+          <button class="w-700 h-12 px-6 text-indigo-100 transition-colors duration-150 bg-sky-500/100 rounded-lg focus:shadow-outline hover:bg-sky-500/100">Proceed</button>
           </div>
-          <div class="flex justify-between items-center mb-6">
-          <a href="#!" class="text-gray-800 mx-5">Forgot password?</a>
-            <div class="form-group form-check">
-            </div>
-            <a href="#!" class="text-sky-500/100 mr-2">Create New Account</a>
-          </div>
+         
 
           </form>
         </div>
@@ -58,4 +78,4 @@ const Login = () => {
     </div>
   )
 }
-export default Login
+export default Signup
