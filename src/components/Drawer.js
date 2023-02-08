@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Grid } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -16,7 +15,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Icon } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
@@ -24,6 +22,10 @@ import ExploreIcon from "@mui/icons-material/Explore";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PersonIcon from "@mui/icons-material/Person";
+
+import "./Drawer.css";
+import { Link } from "react-router-dom";
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -99,31 +101,37 @@ export default function MiniDrawer() {
       id: 1,
       name: "Home",
       icon: <HomeIcon />,
+      path: "/",
     },
     {
       id: 2,
       name: "Search",
       icon: <SearchIcon />,
+      path: "/explore",
     },
     {
       id: 3,
       name: "Explore",
       icon: <ExploreIcon />,
+      path: "/explore",
     },
     {
       id: 4,
       name: "Notifications",
       icon: <NotificationsIcon />,
+      path: "/explore",
     },
     {
       id: 5,
       name: "Create",
       icon: <AddCircleIcon />,
+      path: "/explore",
     },
     {
       id: 6,
       name: "Profile",
       icon: <PersonIcon />,
+      path: "/explore",
     },
   ];
 
@@ -146,6 +154,7 @@ export default function MiniDrawer() {
           <AppBar
             position="fixed"
             sx={{
+              width: "100px",
               backgroundColor: "black",
               left: 0,
             }}
@@ -214,7 +223,10 @@ export default function MiniDrawer() {
                 <ListItem
                   key={item.id}
                   disablePadding
-                  sx={{ display: "block", paddingTop: "10px" }}
+                  sx={{
+                    display: "block",
+                    paddingTop: "10px",
+                  }}
                 >
                   <ListItemButton
                     sx={{
@@ -222,6 +234,8 @@ export default function MiniDrawer() {
                       justifyContent: open ? "initial" : "center",
                       px: 2.5,
                     }}
+                    component={Link}
+                    to={item.path}
                   >
                     <ListItemIcon
                       sx={{
@@ -229,13 +243,18 @@ export default function MiniDrawer() {
                         mr: open ? 3 : "auto",
                         justifyContent: "center",
                         color: "white",
+                        "&:hover": { color: "#0EB9DB" },
                       }}
                     >
                       {item.icon}
                     </ListItemIcon>
                     <ListItemText
                       primary={item.name}
-                      sx={{ opacity: open ? 1 : 0, color: "white" }}
+                      sx={{
+                        opacity: open ? 1 : 0,
+                        color: "white",
+                        "&:hover": { color: "#0EB9DB" },
+                      }}
                     />
                   </ListItemButton>
                 </ListItem>
@@ -263,13 +282,18 @@ export default function MiniDrawer() {
                         minWidth: 0,
                         mr: open ? 3 : "auto",
                         color: "white",
+                        "&:hover": { color: "#0EB9DB" },
                       }}
                     >
                       <LogoutIcon />
                     </ListItemIcon>
                     <ListItemText
                       primary={text}
-                      sx={{ opacity: open ? 1 : 0, color: "white" }}
+                      sx={{
+                        opacity: open ? 1 : 0,
+                        color: "white",
+                        "&:hover": { color: "#0EB9DB" },
+                      }}
                     />
                   </ListItemButton>
                 </ListItem>
@@ -277,54 +301,6 @@ export default function MiniDrawer() {
             </List>
           </Drawer>
         </Box>
-      </div>
-      <div style={{ backgroundColor: "black" }}>
-        <Grid
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justifyContent="center"
-          style={{
-            minHeight: "100vh",
-            maxWidth: "60%",
-            margin: "auto",
-            backgroundColor: "black",
-          }}
-        >
-          <Grid item xs={3}>
-            <Typography paragraph sx={{ color: "white" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
-              Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-              gravida rutrum quisque non tellus. Convallis convallis tellus id
-              interdum velit laoreet id donec ultrices. Odio morbi quis commodo
-              odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum
-              est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-              Metus vulputate eu scelerisque felis imperdiet proin fermentum
-              leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt
-              lobortis feugiat vivamus at augue. At augue eget arcu dictum
-              varius duis at consectetur lorem. Velit sed ullamcorper morbi
-              tincidunt. Lorem donec massa sapien faucibus et molestie ac.
-            </Typography>
-            <Typography paragraph sx={{ color: "white" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
-              Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-              gravida rutrum quisque non tellus. Convallis convallis tellus id
-              interdum velit laoreet id donec ultrices. Odio morbi quis commodo
-              odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum
-              est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-              Metus vulputate eu scelerisque felis imperdiet proin fermentum
-              leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt
-              lobortis feugiat vivamus at augue. At augue eget arcu dictum
-              varius duis at consectetur lorem. Velit sed ullamcorper morbi
-              tincidunt. Lorem donec massa sapien faucibus et molestie ac.
-            </Typography>
-          </Grid>
-        </Grid>
       </div>
     </>
   );
