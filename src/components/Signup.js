@@ -21,14 +21,6 @@ import { borders } from '@mui/system';
 
 function Copyright(props) {
   return (
-    // <Typography variant="body2" color="text.secondary" align="center" {...props}>
-    //   {'Copyright © '}
-    //   <Link color="inherit" href="#">
-    //     Hooli
-    //   </Link>{' '}
-    //   {new Date().getFullYear()}
-    //   {'.'}
-    // </Typography>
     <div></div>
   );
 }
@@ -128,16 +120,7 @@ export default function Login() {
                 autoComplete="current-passcode"
                 
               />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="DOB"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />             
+                         
               <Button
                 type="submit"
                 fullWidth
