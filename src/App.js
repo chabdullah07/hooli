@@ -6,6 +6,7 @@ import Signup from "./components/Signup";
 import { Grid } from "@mui/material";
 import React from "react";
 import Explore from "./components/Explore";
+import PostDetails from "./components/PostDetails";
 import FeedPage from "./components/FeedPage";
 
 
