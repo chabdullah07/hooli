@@ -7,6 +7,8 @@ import { Grid } from "@mui/material";
 import React from "react";
 import Explore from "./components/Explore";
 import FeedPage from "./components/FeedPage";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -35,6 +37,7 @@ function App() {
           </Routes>
         </Grid>
       </div> */}
+      <ToastContainer theme="dark"/>
     </div>
   );
 }
