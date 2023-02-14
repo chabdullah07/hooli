@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import Post from "./Post";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
+import PostDetails from "./PostDetails";
+import "./FeedPage.css";
+const style = {};
 
 function FeedPage() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const [posts, setPosts] = useState([
     {
       username: "Ali",
@@ -42,6 +52,12 @@ function FeedPage() {
           />
         ))}
       </div>
+      <Button onClick={handleOpen}>Open modal</Button>
+      <Modal open={open} onClose={handleClose}>
+        <Box className="modalStyle">
+          <PostDetails />
+        </Box>
+      </Modal>
     </>
   );
 }
