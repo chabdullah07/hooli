@@ -8,10 +8,9 @@ import React from "react";
 import Explore from "./components/Explore";
 import PostDetails from "./components/PostDetails";
 import FeedPage from "./components/FeedPage";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-
+import CreatePost from "./components/CreatePost";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -35,10 +34,11 @@ function App() {
           <Routes>
             <Route exact path="/" element={<FeedPage />} />
             <Route exact path="explore" element={<Explore />} />
+            <Route exact path="create" element={<CreatePost />} />
           </Routes>
         </Grid>
       </div> */}
-      <ToastContainer theme="dark"/>
+      <ToastContainer theme="dark" />
     </div>
   );
 }

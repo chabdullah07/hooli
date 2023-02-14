@@ -22,6 +22,11 @@
     text-align: left;
     color: white;
 }
+.postUser:hover
+{
+    color: gray;
+    cursor: pointer;
+}
 .postHeader
 {
     padding-bottom: 10px;

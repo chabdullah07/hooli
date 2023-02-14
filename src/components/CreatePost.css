@@ -1,0 +1,24 @@
+.cPost{
+    background-color: #262626;
+    width: 100%;
+    border-radius: 20px;
+}
+.cPostHead
+{
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+.svgPhoto
+{
+    margin: 0
+}
+
+.cPostContainer
+{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
