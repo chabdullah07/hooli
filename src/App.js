@@ -5,6 +5,7 @@ import { Grid } from "@mui/material";
 import React from "react";
 import Explore from "./components/Explore";
 import FeedPage from "./components/FeedPage";
+import CreatePost from "./components/CreatePost";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<FeedPage />} />
             <Route exact path="explore" element={<Explore />} />
+            <Route exact path="create" element={<CreatePost />} />
           </Routes>
         </Grid>
       </div>

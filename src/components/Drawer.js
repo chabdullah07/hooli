@@ -125,7 +125,7 @@ export default function MiniDrawer() {
       id: 5,
       name: "Create",
       icon: <AddCircleIcon />,
-      path: "/explore",
+      path: "/create",
     },
     {
       id: 6,
