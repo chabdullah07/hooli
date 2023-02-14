@@ -29,13 +29,14 @@
 }
 .postHeader
 {
-    padding-bottom: 10px;
+    padding-bottom: 20px !important;
     display: flex;
     align-items: center;
 }
 .postAvatar
 {
     margin-right: 15px;
+    margin-left: 0 !important;
 }
 .moreSettings
 {
@@ -52,4 +53,5 @@
 .postLikes{
     display: flex;
     align-items: center;
+    padding-top: 10px;
 }

@@ -3,6 +3,13 @@ import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import Paper from "@mui/material/Paper";
+import InputBase from "@mui/material/InputBase";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import DirectionsIcon from "@mui/icons-material/Directions";
 import "./Explore.css";
 
 export default function MasonryImageList() {
@@ -15,6 +22,31 @@ export default function MasonryImageList() {
         alignItems="center"
         justifyContent="center"
       >
+        <Paper
+          component="form"
+          sx={{
+            padding: "5px",
+            display: "flex",
+            marginTop: "30px",
+            alignItems: "center",
+            width: "100%",
+            backgroundColor: "#262626",
+            borderRadius: "5px",
+          }}
+        >
+          <InputBase
+            sx={{ ml: 2, flex: 1, color: "#FAFAFA" }}
+            placeholder="Search"
+            inputProps={{ "aria-label": "search" }}
+          />
+          <IconButton
+            type="button"
+            sx={{ p: "10px", color: "white" }}
+            aria-label="search"
+          >
+            <SearchIcon />
+          </IconButton>
+        </Paper>
         <Box className="imgBG">
           <ImageList variant="masonry" cols={3} gap={10}>
             {itemData.map((item) => (

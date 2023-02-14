@@ -32,7 +32,7 @@ export default function CreatePost() {
             component="label"
             sx={{
               margin: "10px",
-              backgroundColor: "#0EB9DB",
+              backgroundColor: "#0095f6",
               textTransform: "capitalize",
               "&:hover": { backgroundColor: "#097c93" },
               fontWeight: "500",

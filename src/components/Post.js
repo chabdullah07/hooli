@@ -32,7 +32,7 @@ function Post({ username, caption, imageUrl, likes, date }) {
             fontSize="large"
             sx={{
               color: "white",
-              "&:hover": { color: "#ed4956" },
+              "&:hover": { color: "#0EB9DB" },
               cursor: "pointer",
             }}
           />
@@ -49,7 +49,12 @@ function Post({ username, caption, imageUrl, likes, date }) {
           </h4>
           <BookmarkBorderIcon
             fontSize="large"
-            sx={{ color: "white", marginLeft: "auto", justifySelf: "flex-end" }}
+            sx={{
+              color: "white",
+              marginLeft: "auto",
+              justifySelf: "flex-end",
+              "&:hover": { color: "#0EB9DB" },
+            }}
           />
         </div>
         <h4 className="postText">

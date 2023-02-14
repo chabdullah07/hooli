@@ -131,7 +131,7 @@ export default function MiniDrawer() {
       id: 6,
       name: "Profile",
       icon: <PersonIcon />,
-      path: "/explore",
+      path: "/profile",
     },
   ];
 
@@ -154,7 +154,7 @@ export default function MiniDrawer() {
           <AppBar
             position="fixed"
             sx={{
-              width: "100px",
+              width: "60px",
               backgroundColor: "black",
               left: 0,
             }}
