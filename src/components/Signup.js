@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,26 +15,23 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { WidthNormal } from '@mui/icons-material';
 import { width } from '@mui/system';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import logo from "../assets/hooli_logo_grey.png"
 import { borders } from '@mui/system';
+import { toast, ToastContainer } from 'react-toastify';
+
 
 
 function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="#">
-        Hooli
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
+   return (
+    <div></div>
   );
 }
 
 const theme = createTheme();
 
-export default function Login() {
+export default function Signup() {
+  const navigate = useNavigate()
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -43,6 +41,47 @@ export default function Login() {
     });
   };
 
+  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const notifyE =(msg) => toast.error(msg)
+  const notifyS =(message) => toast.success(message)
+
+  const emailverification = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const passwordverification = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+
+  const postData=() =>{
+// Email Verification
+  if(!emailverification.test(email)){
+    notifyE("Invalid Email")
+    return
+  }else if(!passwordverification.test(password))
+    notifyE("Password must contain at least 8 characters, including at least 1 number and 1 includes both lower and uppercase letters and special characters for example #,?,!")
+    return
+   //Send data to Server
+   fetch("http://localhost:5000/signup", {
+    method: "post",
+    headers:{
+           "Content-Type":"application/json" 
+    },
+    body:JSON.stringify({
+            name:name,
+            userName:userName,
+            email:email,
+            password:password
+    })
+   }).then(res=>res.json())
+   .then(data =>{
+    if(data.error){
+      notifyE(data.msg)
+    }else{
+      notifyS(data.message)
+      navigate("/Login")
+    }
+    console.log(data)})
+  }
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -88,9 +127,36 @@ export default function Login() {
                 margin="normal"
                 required
                 fullWidth
+                id="username"
+                label="User Name"
+                name="username"
+                value={userName}
+                onChange={(e) =>{setUserName(e.target.value)}}
+                autoComplete="username"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="fullname"
+                label="Full Name"
+                type="fullname"
+                id="fullname"
+                value={name}
+                onChange={(e) =>{setName(e.target.value)}}
+                autoComplete="fullname"
+                
+              />
+              <TextField
+                margin="email"
+                required
+                fullWidth
                 id="email"
-                label="Email Address/ User Name"
+                label="Email Address"
                 name="email"
+                value={email}
+                onChange={(e) =>{setEmail(e.target.value)}}
                 autoComplete="email"
                 autoFocus
               />
@@ -98,34 +164,25 @@ export default function Login() {
                 margin="normal"
                 required
                 fullWidth
-                name="passcode"
+                name="password"
+                value={password}
+                onChange={(e) =>{setPassword(e.target.value)}}
                 label="Passcode"
-                type="passcode"
+                type="password"
                 id="passcode"
                 autoComplete="current-passcode"
                 
               />
-              
+                         
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={()=>{postData()}}
               >
-                Login
+                Proceed
               </Button>
-              <Grid container>
-                <Grid item sx={{ ml:1 }}>
-                  <Link href="#" variant="body2" >
-                    forgot passcode
-                  </Link>
-                </Grid>
-                <Grid item xs sx={{ ml:32 }}>
-                  <Link href="#" variant="body2">
-                    {"create new accont"}
-                  </Link>
-                </Grid>
-              </Grid>
               <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
