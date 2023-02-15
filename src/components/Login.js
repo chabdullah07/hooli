@@ -1,24 +1,4 @@
-import  React , {useState} from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { WidthNormal } from '@mui/icons-material';
-import { width } from '@mui/system';
-import logo from "../assets/hooli_logo_grey.png"
-import { borders } from '@mui/system';
-import { toast, ToastContainer } from 'react-toastify';
-
-import * as React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -36,6 +16,7 @@ import { WidthNormal } from "@mui/icons-material";
 import { width } from "@mui/system";
 import logo from "../assets/hooli_logo_grey.png";
 import { borders } from "@mui/system";
+import { toast, ToastContainer } from "react-toastify";
 
 function Copyright(props) {
   return (
@@ -58,11 +39,11 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   //toast function
-  const notifyE =(msg) => toast.error(msg)
-  const notifyS =(message) => toast.success(message)
+  const notifyE = (msg) => toast.error(msg);
+  const notifyS = (message) => toast.success(message);
   // Regex
   const emailverification = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -74,32 +55,34 @@ export default function Login() {
       passcode: data.get("passcode"),
     });
   };
-  const postData=() =>{
+  const postData = () => {
     // Email Verification
-      if(!emailverification.test(email)){
-        notifyE("Invalid Email")
-        return
-      }
-       //Send data to Server
-       fetch("http://localhost:5000/login", {
-        method: "post",
-        headers:{
-               "Content-Type":"application/json" 
-        },
-        body:JSON.stringify({
-                email:email,
-                password:password
-        })
-       }).then(res=>res.json())
-       .then(data =>{
-        if(data.error){
-          notifyE(data.msg)
-        }else{
-          notifyS(data.message)
+    if (!emailverification.test(email)) {
+      notifyE("Invalid Email");
+      return;
+    }
+    //Send data to Server
+    fetch("http://localhost:4000/login", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          notifyE(data.msg);
+        } else {
+          notifyS(data.message);
           // navigate("/Login")
         }
-        console.log(data)})
-      }
+        console.log(data);
+      });
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -150,7 +133,9 @@ export default function Login() {
                 id="email"
                 label="Email Address/ User Name"
                 name="email"
-                onChange={(e) =>{setEmail(e.target.value)}}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 autoComplete="email"
                 autoFocus
               />
@@ -161,7 +146,9 @@ export default function Login() {
                 name="passcode"
                 label="Passcode"
                 type="password"
-                onChange={(e) =>{setPassword(e.target.value)}}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
                 id="passcode"
                 autoComplete="current-passcode"
               />
@@ -170,7 +157,9 @@ export default function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                onClick={() => {postData()}}
+                onClick={() => {
+                  postData();
+                }}
                 sx={{ mt: 3, mb: 2 }}
               >
                 Login
