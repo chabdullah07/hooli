@@ -22,45 +22,50 @@ export default function MasonryImageList() {
         alignItems="center"
         justifyContent="center"
       >
-        <Paper
-          component="form"
-          sx={{
-            padding: "5px",
-            display: "flex",
-            marginTop: "30px",
-            alignItems: "center",
-            width: "100%",
-            backgroundColor: "#262626",
-            borderRadius: "5px",
-          }}
-        >
-          <InputBase
-            sx={{ ml: 2, flex: 1, color: "#FAFAFA" }}
-            placeholder="Search"
-            inputProps={{ "aria-label": "search" }}
-          />
-          <IconButton
-            type="button"
-            sx={{ p: "10px", color: "white" }}
-            aria-label="search"
+        <div className="searchDiv">
+          <Paper
+            className="searchy"
+            component="form"
+            sx={{
+              padding: "5px",
+              display: "flex",
+              marginTop: "30px",
+              alignItems: "center",
+              width: "100%",
+              backgroundColor: "#262626",
+              borderRadius: "5px",
+            }}
           >
-            <SearchIcon />
-          </IconButton>
-        </Paper>
-        <Box className="imgBG">
-          <ImageList variant="masonry" cols={3} gap={10}>
-            {itemData.map((item) => (
-              <ImageListItem key={item.img}>
-                <img
-                  className="postImg"
-                  src={`${item.img}?w=248&fit=crop&auto=format`}
-                  srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.title}
-                  loading="lazy"
-                />
-              </ImageListItem>
-            ))}
-          </ImageList>
+            <InputBase
+              sx={{ ml: 2, flex: 1, color: "#FAFAFA" }}
+              placeholder="Search"
+              inputProps={{ "aria-label": "search" }}
+            />
+            <IconButton
+              type="button"
+              sx={{ p: "10px", color: "white" }}
+              aria-label="search"
+            >
+              <SearchIcon />
+            </IconButton>
+          </Paper>
+        </div>
+        <Box className="gridContainer">
+          <Box className="imgBG">
+            <ImageList variant="masonry" cols={3} gap={10}>
+              {itemData.map((item) => (
+                <ImageListItem key={item.img}>
+                  <img
+                    className="postImg"
+                    src={`${item.img}?w=248&fit=crop&auto=format`}
+                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    alt={item.title}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+              ))}
+            </ImageList>
+          </Box>
         </Box>
       </Grid>
     </>
