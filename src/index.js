@@ -10,7 +10,7 @@ import "./components/Login.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <PostDetails />
+    <App/>
   </BrowserRouter>
 );
 

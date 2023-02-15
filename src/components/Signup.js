@@ -78,7 +78,7 @@ export default function Signup() {
       notifyE(data.msg)
     }else{
       notifyS(data.message)
-      navigate("/Login")
+      // navigate("/Login")
     }
     console.log(data)})
   }
@@ -181,7 +181,7 @@ export default function Signup() {
                 sx={{ mt: 3, mb: 2 }}
                 onClick={()=>{postData()}}
               >
-                Proceed
+                Proceed >
               </Button>
               <Copyright sx={{ mt: 5 }} />
             </Box>

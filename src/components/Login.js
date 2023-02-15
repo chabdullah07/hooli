@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React , {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,6 +16,7 @@ import { WidthNormal } from '@mui/icons-material';
 import { width } from '@mui/system';
 import logo from "../assets/hooli_logo_grey.png"
 import { borders } from '@mui/system';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 function Copyright(props) {
@@ -34,6 +35,14 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  //toast function
+  const notifyE =(msg) => toast.error(msg)
+  const notifyS =(message) => toast.success(message)
+  // Regex
+  const emailverification = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -42,6 +51,32 @@ export default function Login() {
       passcode: data.get('passcode'),
     });
   };
+  const postData=() =>{
+    // Email Verification
+      if(!emailverification.test(email)){
+        notifyE("Invalid Email")
+        return
+      }
+       //Send data to Server
+       fetch("http://localhost:5000/login", {
+        method: "post",
+        headers:{
+               "Content-Type":"application/json" 
+        },
+        body:JSON.stringify({
+                email:email,
+                password:password
+        })
+       }).then(res=>res.json())
+       .then(data =>{
+        if(data.error){
+          notifyE(data.msg)
+        }else{
+          notifyS(data.message)
+          // navigate("/Login")
+        }
+        console.log(data)})
+      }
 
   return (
     <ThemeProvider theme={theme}>
@@ -91,6 +126,7 @@ export default function Login() {
                 id="email"
                 label="Email Address/ User Name"
                 name="email"
+                onChange={(e) =>{setEmail(e.target.value)}}
                 autoComplete="email"
                 autoFocus
               />
@@ -100,7 +136,8 @@ export default function Login() {
                 fullWidth
                 name="passcode"
                 label="Passcode"
-                type="passcode"
+                type="password"
+                onChange={(e) =>{setPassword(e.target.value)}}
                 id="passcode"
                 autoComplete="current-passcode"
                 
@@ -110,6 +147,7 @@ export default function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
+                onClick={() => {postData()}}
                 sx={{ mt: 3, mb: 2 }}
               >
                 Login
