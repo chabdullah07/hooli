@@ -8,7 +8,7 @@
 .mainGrid{
     flex: auto;
     overflow: auto !important;
-    margin: 0;
+    margin-top: 50px;
 }
 
 .profileRight
@@ -29,7 +29,7 @@
     width: 700;
     height: 100%;
     overflow-y: "scroll";
-    margin-top: 50px;
+    margin-top: 20px;
     margin-bottom: 50px;
 }
 

@@ -7,6 +7,8 @@ import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import SettingsIcon from "@mui/icons-material/Settings";
+import AppsIcon from "@mui/icons-material/Apps";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 
 export default function Profile() {
   return (
@@ -16,7 +18,6 @@ export default function Profile() {
         alignItems="center"
         justifyContent="center"
         width="900px"
-        sx={{ marginTop: "30px" }}
       >
         <div
           className="profileContainer"
@@ -108,7 +109,57 @@ export default function Profile() {
             </div>
           </div>
         </div>
+
         <Divider className="profileDivider" sx={{ borderBottomWidth: 0.1 }} />
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "20px",
+          }}
+        >
+          <AppsIcon
+            fontSize="medium"
+            sx={{
+              color: "white",
+              "&:hover": { color: "#0EB9DB" },
+              cursor: "pointer",
+            }}
+          />
+          <h4
+            style={{
+              color: "white",
+              marginLeft: "10px",
+              fontSize: "16px",
+              marginRight: "50px",
+              cursor: "pointer",
+              padding: 0,
+            }}
+          >
+            Posts
+          </h4>
+          <BookmarkBorderIcon
+            fontSize="medium"
+            sx={{
+              color: "white",
+              "&:hover": { color: "#0EB9DB" },
+              cursor: "pointer",
+            }}
+          />
+          <h4
+            style={{
+              color: "white",
+              marginLeft: "10px",
+              fontSize: "16px",
+              padding: 0,
+              cursor: "pointer",
+            }}
+          >
+            Saved
+          </h4>
+        </div>
 
         <Box className="profileFeed">
           <ImageList cols={3} gap={20}>
