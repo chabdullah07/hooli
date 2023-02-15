@@ -17,7 +17,7 @@ import { Search } from "@mui/icons-material";
 function App() {
   return (
     <div className="App">
-      <Drawer />
+      <Signup />
       <div style={{ backgroundColor: "black" }}>
         <Grid
           container

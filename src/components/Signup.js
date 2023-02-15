@@ -54,13 +54,14 @@ export default function Signup() {
     if (!emailverification.test(email)) {
       notifyE("Invalid Email");
       return;
-    } else if (!passwordverification.test(password))
+    } else if (!passwordverification.test(password)) {
       notifyE(
         "Password must contain at least 8 characters, including at least 1 number and 1 includes both lower and uppercase letters and special characters for example #,?,!"
       );
-    return;
+      return;
+    }
     //Send data to Server
-    fetch("http://localhost:5000/signup", {
+    fetch("http://localhost:4000/signup", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +79,7 @@ export default function Signup() {
           notifyE(data.msg);
         } else {
           notifyS(data.message);
-          navigate("/Login");
+          // navigate("/Login")
         }
         console.log(data);
       });
