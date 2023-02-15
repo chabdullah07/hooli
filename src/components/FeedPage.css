@@ -1,0 +1,13 @@
+.modalStyle
+{
+    /* border-width: 1px; */
+    margin-top: 10vh !important;
+    margin-right: 15vh !important;
+    margin-left: 15vh !important;
+    transform: 'translate(-50%, -50%)';
+    width: 400;
+    background-color: 'background.paper';
+    border: '2px solid #000';
+    box-shadow: 24;
+}
+

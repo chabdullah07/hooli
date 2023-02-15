@@ -6,7 +6,7 @@ import { Divider } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 
-function Post({ username, caption, imageUrl, likes }) {
+function Post({ username, caption, imageUrl, likes, date }) {
   return (
     <>
       <div className="post">
@@ -18,12 +18,24 @@ function Post({ username, caption, imageUrl, likes }) {
           />
           <h3 className="postUser">{username}</h3>
           <h3 style={{ marginLeft: "10px", color: "white" }}>•</h3>
-          <h3 style={{ marginLeft: "10px", color: "grey" }}>2d</h3>
-          <MoreHorizIcon className="moreSettings" />
+          <h3 style={{ marginLeft: "10px", color: "grey", fontSize: "16px" }}>
+            {date}
+          </h3>
+          <MoreHorizIcon
+            className="moreSettings"
+            sx={{ "&:hover": { color: "gray" }, cursor: "pointer" }}
+          />
         </div>
         <img className="postImage" src={imageUrl} alt="Post" />
         <div className="postLikes">
-          <FavoriteBorderIcon fontSize="large" sx={{ color: "white" }} />
+          <FavoriteBorderIcon
+            fontSize="large"
+            sx={{
+              color: "white",
+              "&:hover": { color: "#0EB9DB" },
+              cursor: "pointer",
+            }}
+          />
           <h4
             style={{
               color: "white",
@@ -37,7 +49,12 @@ function Post({ username, caption, imageUrl, likes }) {
           </h4>
           <BookmarkBorderIcon
             fontSize="large"
-            sx={{ color: "white", marginLeft: "auto", justifySelf: "flex-end" }}
+            sx={{
+              color: "white",
+              marginLeft: "auto",
+              justifySelf: "flex-end",
+              "&:hover": { color: "#0EB9DB" },
+            }}
           />
         </div>
         <h4 className="postText">

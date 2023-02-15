@@ -7,8 +7,6 @@
     display: none;
 }
 
-
-
 .postImg{
     border: 0.5px solid #4d4d4d;
     opacity: 1;
@@ -33,5 +31,6 @@
 .imgBG{
     width: 700;
     height: 750;
-    overflow-y: "scroll"; 
+    overflow-y: "scroll";
+    margin-top: 30px;
 }

@@ -4,7 +4,7 @@ import FeedPage from "./FeedPage";
 import "./PostDetails.css";
 import Avatar from "@mui/material/Avatar";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { Divider } from "@mui/material";
+import { colors, Divider } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import Stack from "@mui/material/Stack";
@@ -31,7 +31,7 @@ function PostDetails({ username, caption, imageUrl, likes }) {
                 />
                 <Stack className="">
                   <p className="postUser">username bin username</p>
-                  <p className="postUser">2d ago</p>
+                  <p className="postInfo">2d ago</p>
                 </Stack>
               </div>
             </div>
