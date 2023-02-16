@@ -17,7 +17,6 @@ import { Search } from "@mui/icons-material";
 function App() {
   return (
     <div className="App">
-      <Signup />
       <div style={{ backgroundColor: "black" }}>
         <Grid
           container
@@ -27,12 +26,14 @@ function App() {
           justifyContent="center"
           style={{
             minHeight: "100vh",
-            maxWidth: "40%",
+            maxWidth: "100vw",
             margin: "auto",
             backgroundColor: "black",
           }}
         >
           <Routes>
+            <Route exact path="login" element={<Login />} />
+            <Route exact path="signup" element={<Signup />} />
             <Route exact path="/" element={<FeedPage />} />
             <Route exact path="explore" element={<Explore />} />
             <Route exact path="explore" element={<Search />} />

@@ -19,6 +19,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import logo from "../assets/hooli_logo_grey.png";
 import { borders } from "@mui/system";
 import { toast, ToastContainer } from "react-toastify";
+import SendIcon from '@mui/icons-material/Send';
 
 function Copyright(props) {
   return <div></div>;
@@ -187,14 +188,15 @@ export default function Signup() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{height: 50, mt: 3, mb: 2 }}
+                endIcon={<SendIcon />}
                 onClick={() => {
                   postData();
                 }}
               >
                 Proceed
               </Button>
-              <Copyright sx={{ mt: 5 }} />
+              <Copyright sx={{mt: 5 }} />
             </Box>
           </Box>
         </Grid>

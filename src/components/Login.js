@@ -17,6 +17,8 @@ import { width } from "@mui/system";
 import logo from "../assets/hooli_logo_grey.png";
 import { borders } from "@mui/system";
 import { toast, ToastContainer } from "react-toastify";
+import SendIcon from "@mui/icons-material/Send";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -41,6 +43,7 @@ const theme = createTheme();
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   //toast function
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (message) => toast.success(message);
@@ -57,8 +60,9 @@ export default function Login() {
   };
   const postData = () => {
     // Email Verification
-    if (!emailverification.test(email)) {
-      notifyE("Invalid Email");
+    const hasErrors = validateForm();
+    if (hasErrors) {
+      notifyE(hasErrors);
       return;
     }
     //Send data to Server
@@ -78,10 +82,18 @@ export default function Login() {
           notifyE(data.msg);
         } else {
           notifyS(data.message);
+          navigate("/")
           // navigate("/Login")
         }
         console.log(data);
       });
+  };
+
+  const validateForm = () => {
+    if (!email) return "Please enter your email";
+    if (!emailverification.test(email)) return "Email Invalid";
+    if (!password) return "Please Enter your password";
+    return false;
   };
 
   return (
@@ -157,10 +169,11 @@ export default function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
+                endIcon={<SendIcon />}
                 onClick={() => {
                   postData();
                 }}
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ height: 50, mt: 3, mb: 2 }}
               >
                 Login
               </Button>
@@ -171,7 +184,7 @@ export default function Login() {
                   </Link>
                 </Grid>
                 <Grid item xs sx={{ ml: 32 }}>
-                  <Link href="#" variant="body2">
+                  <Link href="signup" variant="body2">
                     {"create new accont"}
                   </Link>
                 </Grid>
