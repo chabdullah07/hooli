@@ -80,6 +80,7 @@ export default function Signup() {
           notifyE(data.msg);
         } else {
           notifyS(data.message);
+          navigate("/login")
           // navigate("/Login")
         }
         console.log(data);

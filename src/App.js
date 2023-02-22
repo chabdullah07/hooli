@@ -16,6 +16,7 @@ import { Search } from "@mui/icons-material";
 
 function App() {
   return (
+    
     <div className="App">
       <Drawer />
       <div style={{ backgroundColor: "black" }}>
@@ -32,6 +33,7 @@ function App() {
             backgroundColor: "black",
           }}
         >
+         <Drawer />
           <Routes>
             <Route exact path="/" element={<FeedPage />} />
             <Route exact path="login" element={<Login />} />
