@@ -1,6 +1,6 @@
 .cPost{
     background-color: #262626;
-    width: 100%;
+    width: 50%;
     border-radius: 20px;
 }
 .cPostHead
@@ -12,7 +12,9 @@
 }
 .svgPhoto
 {
-    margin: 0
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .cPostContainer
@@ -22,4 +24,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.cPModal
+{
+    /* border-width: 1px; */
+    margin-top: 10vh !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transform: 'translate(-50%, -50%)';
+    width: 70%;
+    background-color: 'background.paper';
+    box-shadow: 24;
 }

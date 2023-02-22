@@ -2,7 +2,14 @@ import { Divider } from "@mui/material";
 import React from "react";
 import "./CreatePost.css";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import UploadPost from "./UploadPost";
+
 export default function CreatePost() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <>
       <div className="cPost">
@@ -13,10 +20,11 @@ export default function CreatePost() {
         <div className="cPostContainer">
           <div className="svgPhoto">
             <svg
+              style={{ cursor: "pointer" }}
               id="Layer"
-              height="100"
+              height="150"
               viewBox="0 0 24 24"
-              width="100"
+              width="150"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -26,22 +34,27 @@ export default function CreatePost() {
               />
             </svg>
           </div>
-          <h2 style={{ color: "white", margin: "10px" }}>Upload Photos Here</h2>
           <Button
-            variant="contained"
-            component="label"
+            onClick={handleOpen}
             sx={{
-              margin: "10px",
-              backgroundColor: "#0095f6",
-              textTransform: "capitalize",
-              "&:hover": { backgroundColor: "#097c93" },
-              fontWeight: "500",
+              backgroundColor: "#0EB9DB",
+              marginTop: "20px",
+              color: "white",
               fontFamily: "Poppins",
+              width: "200px",
+              borderRadius: "60px",
+              padding: "10px",
+              fontWeight: "500",
+              "&:hover": { color: "white", backgroundColor: "#097c93" },
             }}
           >
-            Select Your Photo
-            <input hidden accept="image/*" multiple type="file" />
+            Create Post
           </Button>
+          <Modal open={open} onClose={handleClose}>
+            <Box className="cPModal">
+              <UploadPost />
+            </Box>
+          </Modal>
         </div>
       </div>
     </>

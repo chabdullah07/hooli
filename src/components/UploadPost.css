@@ -1,0 +1,29 @@
+.cPHeader
+{
+    display: flex;
+    align-items: center !important;
+}
+.cPAvatar
+{
+    margin-right: 20px !important;
+    margin-left: 30px !important;
+}
+
+.cP
+{
+height: 100px;
+display: flex;
+align-items: center !important;
+}
+
+.cpTextArea
+{
+    --Textarea-focusedThickness: 0px !important;
+    --Textarea-focusedHighlight: gray !important;
+}
+
+.cPBox{
+    width: 50%;
+    height: 80vh;
+    background-color: #131313;
+}

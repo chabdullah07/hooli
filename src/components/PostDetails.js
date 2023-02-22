@@ -1,12 +1,7 @@
 import * as React from "react";
 import { Box } from "@mui/system";
-import FeedPage from "./FeedPage";
 import "./PostDetails.css";
 import Avatar from "@mui/material/Avatar";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { colors, Divider } from "@mui/material";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import Stack from "@mui/material/Stack";
 
 function PostDetails({ username, caption, imageUrl, likes }) {

@@ -19,5 +19,5 @@ mongoose.connection.on("error", () => {
   console.log("MongoDB Not Connected");
 });
 app.listen(port, () => {
-  console.log("server is running on port 5000");
+  console.log("server is running on port " + port);
 });

@@ -17,6 +17,7 @@ import { Search } from "@mui/icons-material";
 function App() {
   return (
     <div className="App">
+      <Drawer />
       <div style={{ backgroundColor: "black" }}>
         <Grid
           container
@@ -32,9 +33,9 @@ function App() {
           }}
         >
           <Routes>
+            <Route exact path="/" element={<FeedPage />} />
             <Route exact path="login" element={<Login />} />
             <Route exact path="signup" element={<Signup />} />
-            <Route exact path="/" element={<FeedPage />} />
             <Route exact path="explore" element={<Explore />} />
             <Route exact path="explore" element={<Search />} />
             <Route exact path="profile" element={<Profile />} />
