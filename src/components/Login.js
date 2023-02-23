@@ -82,8 +82,8 @@ export default function Login() {
           notifyE(data.msg);
         } else {
           notifyS(data.message);
+          localStorage.setItem("token", data.token)
           navigate("/")
-          // navigate("/Login")
         }
         console.log(data);
       });

@@ -4,6 +4,7 @@ const port = 4000;
 const mongoose = require("mongoose")
 const { mongoUrl } = require("./keys")
 require('./models/model')
+require('./models/post')
 const auth = require("./routes/auth")
 const cors = require("cors")
 

@@ -14,7 +14,7 @@ function UploadPost() {
   const [image, setImage] = React.useState("");
   const [url, setURL] = React.useState("");
 
-  const createPost = () => {
+  const uploadImage = () => {
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "hooli-app");
@@ -26,11 +26,35 @@ function UploadPost() {
       .then((res) => res.json())
       .then((data) => {
         setURL(data.url);
+        uploadPost();
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  const uploadPost = () => {
+    const payload = {
+      imageUrl: url,
+      content: text,
+    }
+    fetch("http://localhost:4000/createPost", {
+      method: "post",
+      body: payload,
+      headers: {
+        authorization: `Bearer: ${localStorage.getItem("token")}`
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setURL(data.url);
+        uploadPost();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  
   return (
     <>
       <MuiBox className="mainBox">
@@ -129,7 +153,7 @@ function UploadPost() {
                 fontFamily: "Poppins",
                 "&:hover": { color: "#097c93", backgroundColor: "transparent" },
               }}
-              onClick={() => createPost()}
+              onClick={() => uploadImage()}
             >
               Create <TrendingFlatIcon sx={{ ml: "10px" }} />
             </Button>
